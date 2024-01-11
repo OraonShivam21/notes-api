@@ -24,7 +24,7 @@ router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
     const userFound = await User.findOne({ email });
-    if (!userFound) throw new Erro("Please register yourself first!");
+    if (!userFound) throw "Please register yourself first!";
     bcrypt.compare(password, userFound.password, (err, result) => {
       if (err) throw err;
       if (result) {
