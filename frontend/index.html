@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Notes Taking App</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: "Raleway", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: rgb(255, 255, 255);
+      }
+      #hero-container {
+        /* display: none; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 6rem 10rem 0;
+        text-align: center;
+      }
+      #hero-container h1 {
+        font-size: 3.2rem;
+        margin-bottom: 3rem;
+      }
+      #hero-container p {
+        font-size: 1.3rem;
+        margin: 2rem 0;
+        max-width: 50rem;
+      }
+      #hero-container button {
+        border: none;
+        background-color: rgba(0, 0, 0, 0.4);
+        color: rgb(255, 255, 255);
+        font-size: 1rem;
+        padding: 1rem;
+        width: 16rem;
+        cursor: pointer;
+        transition: all 0.2s ease-in;
+      }
+      #hero-container button:hover {
+        transform: scale(1.1);
+      }
+      #register {
+        display: none;
+        /* display: flex; */
+        flex-direction: column;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+        margin: 1rem 20rem 0;
+        padding: 2rem 4rem;
+        gap: 1rem;
+        text-align: center;
+      }
+      #register h1,
+      #login h1 {
+        font-size: 2.4rem;
+        margin-top: 3rem;
+      }
+      #register label,
+      #login label {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-top: 1.2rem;
+      }
+      #register input,
+      #login input {
+        border: 1px solid rgba(0, 0, 0, 0.4);
+        border-radius: 8px;
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+      }
+      #register button,
+      #login button {
+        font-family: "Raleway", sans-serif;
+        font-weight: 600;
+        padding: 0.4rem;
+        margin: 1rem 0 0.6rem;
+        cursor: pointer;
+        transition: all 0.2s ease-in;
+      }
+      #register button:hover,
+      #login button:hover {
+        transform: scale(1.03);
+      }
+      #login {
+        display: none;
+        /* display: flex; */
+        flex-direction: column;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+        margin: 6rem 20rem 0;
+        padding: 2rem 4rem;
+        gap: 1rem;
+        text-align: center;
+      }
+      #message-box {
+        display: none;
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid;
+        border-radius: 8px;
+        color: rgba(0, 0, 0, 0.6);
+        padding: 0.8rem 1rem;
+        width: max-content;
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+        opacity: 0.7;
+        transition: all 0.3s ease-in;
+      }
+    </style>
+  </head>
+  <body>
+    <h4 id="message-box"></h4>
+    <div id="hero-container">
+      <h1>Welcome to the Notes Creating App</h1>
+      <p>You can create your own notes and have fun with them!</p>
+      <p>
+        Have your registered yourselves for this application? If the question is
+        no, then register yourself to create your own note in this application.
+      </p>
+      <button id="hero-register">Register Yourself</button>
+      <p>
+        Oh, so you've ignored the register button and are coming here. Then
+        certainly you would've already signed up with us huh. Then continue with
+        logging yourself in.
+      </p>
+      <button id="hero-login">Login Yourself</button>
+    </div>
+
+    <div id="register">
+      <div class="register-home-login">
+        <button id="register-home">HOME</button>
+        <button id="register-login">LOGIN</button>
+      </div>
+      <h1>Register yourself here...</h1>
+      <label for="regusername">Username:</label>
+      <input
+        type="text"
+        name="regusername"
+        id="regusername"
+        placeholder="Enter username"
+      />
+      <label for="regemail">Email:</label>
+      <input
+        type="email"
+        name="regemail"
+        id="regemail"
+        placeholder="Enter email"
+      />
+      <label for="regpassword">Password:</label>
+      <input
+        type="password"
+        name="regpassword"
+        id="regpassword"
+        placeholder="Enter password"
+      />
+      <button id="register-btn" type="submit">Register</button>
+    </div>
+
+    <div id="login">
+      <div class="register-home-login">
+        <button id="login-home">HOME</button>
+        <button id="login-register">REGISTER</button>
+      </div>
+      <h1>Login from here...</h1>
+      <label for="logemail">Email:</label>
+      <input
+        type="text"
+        name="logemail"
+        id="logemail"
+        placeholder="Enter email"
+      />
+      <label for="logpassword">Password:</label>
+      <input
+        type="password"
+        name="logpassword"
+        id="logpassword"
+        placeholder="Enter password"
+      />
+      <button id="login-btn" type="submit">Login</button>
+    </div>
+  </body>
+
+  <script>
+    // hero container
+    const heroContainer = document.getElementById("hero-container");
+    const heroRegister = document.getElementById("hero-register");
+    const heroLogin = document.getElementById("hero-login");
+
+    // register container
+    const register = document.getElementById("register");
+    const registerBtn = document.getElementById("register-btn");
+    const registerHome = document.getElementById("register-home");
+    const registerLogin = document.getElementById("register-login");
+
+    // login container
+    const login = document.getElementById("login");
+    const loginBtn = document.getElementById("login-btn");
+    const loginHome = document.getElementById("login-home");
+    const loginRegister = document.getElementById("login-register");
+
+    // api url
+    const notesUrl = "https://notes-taking-app-a8m5.onrender.com";
+
+    // message-box
+    const messageBox = document.getElementById("message-box");
+
+    heroRegister.addEventListener("click", function (e) {
+      heroContainer.style.display = "none";
+      register.style.display = "flex";
+    });
+
+    heroLogin.addEventListener("click", function (e) {
+      heroContainer.style.display = "none";
+      login.style.display = "flex";
+    });
+
+    registerHome.addEventListener("click", function (e) {
+      register.style.display = "none";
+      heroContainer.style.display = "flex";
+    });
+
+    registerLogin.addEventListener("click", function (e) {
+      register.style.display = "none";
+      login.style.display = "flex";
+    });
+
+    loginHome.addEventListener("click", function (e) {
+      login.style.display = "none";
+      heroContainer.style.display = "flex";
+    });
+
+    loginRegister.addEventListener("click", function (e) {
+      login.style.display = "none";
+      register.style.display = "flex";
+    });
+
+    registerBtn.addEventListener("click", function (e) {
+      const username = document.getElementById("regusername").value;
+      const email = document.getElementById("regemail").value;
+      const password = document.getElementById("regpassword").value;
+
+      fetch(`${notesUrl}/user/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, email, password }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          showMessageBox(data.message, 2000, false);
+          register.style.display = "none";
+          login.style.display = "flex";
+          showMessageBox("Now please login", 1000, false);
+        })
+        .catch((error) => {
+          showMessageBox(error, 3000, false);
+        });
+    });
+
+    loginBtn.addEventListener("click", function (e) {
+      const email = document.getElementById("logemail").value;
+      const password = document.getElementById("logpassword").value;
+
+      fetch(`${notesUrl}/user/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          showMessageBox(data.message, 1000, true);
+          const token = data.accessToken;
+          localStorage.setItem("token", JSON.stringify(token));
+        })
+        .catch((error) => {
+          showMessageBox(error, 3000, false);
+        });
+    });
+
+    function showMessageBox(message, delay, notes) {
+      messageBox.innerText = message;
+      messageBox.style.display = "block";
+      setTimeout(() => {
+        messageBox.style.display = "none";
+        if(notes)
+          window.location.replace("./notes.html");
+      }, delay);
+
+    }
+  </script>
+</html>

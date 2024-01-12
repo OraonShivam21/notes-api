@@ -50,7 +50,7 @@ router.delete("/delete/:id", async (req, res) => {
     if (noteFound.userID !== req.body.userID)
       throw "Unauthorized - You're not authorized to delete this note";
     await Note.findByIdAndDelete(noteID);
-    res.status(201).json({ message: "Note has been updated" });
+    res.status(201).json({ message: "Note has been deleted" });
   } catch (error) {
     res.status(400).json({ error });
   }
