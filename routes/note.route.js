@@ -6,6 +6,30 @@ const router = express.Router();
 
 router.use(auth);
 
+/**
+ * @swagger
+ * components:
+ *    schemas:
+ *        Note:
+ *            type: object
+ *            properties:
+ *                id:
+ *                    type: string
+ *                    description: The auto generated _id for each note
+ *                title:
+ *                    type: string
+ *                    description: The title of the note
+ *                body:
+ *                    type: string
+ *                    description: The body of the note
+ *                userID:
+ *                    type: string
+ *                    description: The user ID of the user who created the note
+ *                username:
+ *                    type: string
+ *                    description: The username of the user who created the note
+ */
+
 router.post("/create", async (req, res) => {
   try {
     const note = new Note(req.body);
